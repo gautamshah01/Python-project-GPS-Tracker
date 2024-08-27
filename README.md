@@ -2,11 +2,15 @@
 
 This project is a simple yet powerful GPS locator tool built using Python. It leverages IP-based geolocation to determine the user's current coordinates (latitude and longitude) and displays the location on an interactive map using the folium library. The project also automates the opening of this map in a browser using the selenium library.
 
+
 🚀 Features
 
 IP-Based Geolocation: Fetches your current location using IP address via the ipinfo.io API.
+
 Interactive Map: Automatically generates a visually appealing map with a marker at your location using folium.
+
 Browser Automation: Opens the map in a Chrome browser using Selenium, allowing for a seamless, automated experience.
+
 User-Friendly: The map is saved as an HTML file and is easily shareable or accessible later.
 
 🛠️ Installation
@@ -68,13 +72,20 @@ After 20 seconds, the browser will automatically close.
 🧩 Prerequisites
 
 Python 3.x: Ensure Python 3.x is installed on your machine.
+
 Google Chrome: The script automates Chrome for displaying the map, so Chrome must be installed.
+
 ChromeDriver: Ensure that ChromeDriver is installed and properly configured.
+
+
 ⚙️ Customization
+
 Feel free to modify the following parts of the code for further customization:
 
 Map Location: Modify the map location or zoom level by adjusting the latitude, longitude, and zoom settings in the folium.Map() function.
+
 Marker and Popup: You can customize the marker popup message or add more details (like additional markers).
+
 File Path: Change the path where the HTML file is saved by modifying the fileName variable in the gps_locator() function.
 
 🛡️ Error Handling
@@ -82,13 +93,16 @@ File Path: Change the path where the HTML file is saved by modifying the fileNam
 The script includes basic error handling, such as:
 
 Internet Unavailability: If there is no internet connection, the script will exit gracefully with a message.
+
 Browser Issues: If Selenium encounters issues (e.g., incorrect file path or missing ChromeDriver), the error will be printed to the console for debugging.
 
 
 📜 Future Improvements
 
-Enhanced Error Handling: Add more granular error handling for different parts of the script (e.g., API call failures, map generation issues).
+GUI(Graphical User Interface): Implement a GUI for easier interaction.
+
 Multiple Location Markers: Extend the functionality to add multiple location markers on the map.
+
 Cross-Browser Support: Add support for other browsers like Firefox or Edge by using their respective web drivers.
 
 
@@ -104,7 +118,9 @@ Feel free to fork the repository and submit pull requests. All contributions are
 🔗 Links
 
 Documentation: Folium Library
+
 Selenium Documentation: Selenium WebDriver for Python
+
 IPInfo API: ipinfo.io
 
 
