@@ -4,61 +4,69 @@ from selenium import webdriver
 import folium
 import datetime
 import time
+import os
 
-# this method will return us our actual coordinates
-# using our ip address
-
+# This method will return the user's actual coordinates using their IP address
 def locationCoordinates():
-	try:
-		response = requests.get('https://ipinfo.io')
-		data = response.json()
-		loc = data['loc'].split(',')
-		lat, long = float(loc[0]), float(loc[1])
-		city = data.get('city', 'Unknown')
-		state = data.get('region', 'Unknown')
-		return lat, long, city, state
-		# return lat, long
-	except:
-		# Displaying ther error message
-		print("Internet Not avialable")
-		# closing the program
-		exit()
-		return False
+    try:
+        # Fetching geolocation data based on IP address
+        response = requests.get('https://ipinfo.io')
+        data = response.json()
+        loc = data['loc'].split(',')
+        lat, long = float(loc[0]), float(loc[1])
+        city = data.get('city', 'Unknown')
+        state = data.get('region', 'Unknown')
+        return lat, long, city, state
+    except requests.RequestException:
+        # Error handling for issues with network or API request
+        print("Internet Not Available. Please check your connection.")
+        exit()
 
-
-# this method will fetch our coordinates and create a html file
-# of the map
+# This method will fetch the coordinates and create an HTML file of the map
 def gps_locator():
+    try:
+        lat, long, city, state = locationCoordinates()
 
-	obj = folium.Map(location=[0, 0], zoom_start=2)
+        # Print location data to the console
+        print(f"You Are in {city}, {state}")
+        print(f"Your latitude = {lat} and longitude = {long}")
 
-	try:
-		lat, long, city, state = locationCoordinates()
-		print("You Are in {},{}".format(city, state))
-		print("Your latitude = {} and longitude = {}".format(lat, long))
-		folium.Marker([lat, long], popup='Current Location').add_to(obj)
+        # Create a map object centered at the user's location
+        obj = folium.Map(location=[lat, long], zoom_start=12)
 
-		fileName = "C:/Users/navin/Downloads/prac14html" + \
-			str(datetime.date.today()) + ".html"
+        # Adding a marker for the current location
+        folium.Marker([lat, long], popup='Current Location').add_to(obj)
 
-		obj.save(fileName)
+        # Generate the file name with the current date
+        file_path = os.path.join(os.getenv('USERPROFILE'), 'Downloads', f'prac14html_{datetime.date.today()}.html')
 
-		return fileName
+        # Save the map to an HTML file
+        obj.save(file_path)
+        
+        return file_path
 
-	except:
-		return False
-
+    except Exception as e:
+        # Error handling for any issue with map creation
+        print(f"An error occurred: {str(e)}")
+        return None
 
 # Main method
 if __name__ == "__main__":
+    print("---------------GPS Using Python---------------\n")
 
-	print("---------------GPS Using Python---------------\n")
+    # Call the gps_locator function to generate the map and open the file in Chrome
+    page = gps_locator()
 
-	# function Calling
-	page = gps_locator()
-	print("\nOpening File.............")
-	dr = webdriver.Chrome()
-	dr.get(page)
-	time.sleep(20)
-	dr.quit()
-	print("\nBrowser Closed..............")
+    if page:
+        print("\nOpening File.............")
+        try:
+            # Open the generated HTML file in a Chrome browser
+            dr = webdriver.Chrome()
+            dr.get(f"file:///{page}")
+            time.sleep(20)
+            dr.quit()
+            print("\nBrowser Closed..............")
+        except Exception as e:
+            print(f"Failed to open the browser: {str(e)}")
+    else:
+        print("Failed to create the map HTML file.")
