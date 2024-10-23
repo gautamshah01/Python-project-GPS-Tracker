@@ -1,9 +1,9 @@
-🌍 GPS Locator Using Python
+<h1 align=center>🌍 GPS Locator Using Python</h1>
 
 This project is a simple yet powerful GPS locator tool built using Python. It leverages IP-based geolocation to determine the user's current coordinates (latitude and longitude) and displays the location on an interactive map using the folium library. The project also automates the opening of this map in a browser using the selenium library.
 
 
-🚀 Features
+<h2>🚀 Features</h2>
 
 IP-Based Geolocation: Fetches your current location using IP address via the ipinfo.io API.
 
@@ -13,7 +13,7 @@ Browser Automation: Opens the map in a Chrome browser using Selenium, allowing f
 
 User-Friendly: The map is saved as an HTML file and is easily shareable or accessible later.
 
-🛠️ Installation
+<h2>🛠️ Installation</h2>
 
 Install the Dependencies: Install the required Python libraries using pip:
 
@@ -24,7 +24,7 @@ Install ChromeDriver:
 Download and install ChromeDriver, ensuring it matches the version of your installed Chrome browser.
 Add ChromeDriver to your system PATH, or specify its location in your code.
 
-💻 Usage
+<h2>💻 Usage</h2>
 
 After cloning the repository and installing dependencies, you can run the script as follows:
 
@@ -46,7 +46,7 @@ Your latitude = 19.0728 and longitude = 72.8826
 Opening File.............
 The generated HTML map file will then open in a browser.
 
-📁 HTML File Generation
+<h2>📁 HTML File Generation</h2>
 
 The generated HTML file is saved in your local Downloads directory by default, with a filename in the format prac14html_<DATE>.html. You can modify the file path in the code to store it in a different location.
 
@@ -55,7 +55,7 @@ plaintext
 Copy code
 C:/Users/navin/Downloads/prac14html_2024-08-23.html
 
-🔍 Code Explanation
+<h2>🔍 Code Explanation</h2>
 
 locationCoordinates()
 This function sends a request to ipinfo.io to retrieve geolocation data (latitude, longitude, city, and state) based on your public IP address.
@@ -69,7 +69,7 @@ The Selenium webdriver.Chrome() function is used to open the generated HTML map 
 After 20 seconds, the browser will automatically close.
 
 
-🧩 Prerequisites
+<h2>🧩 Prerequisites</h2>
 
 Python 3.x: Ensure Python 3.x is installed on your machine.
 
@@ -78,7 +78,7 @@ Google Chrome: The script automates Chrome for displaying the map, so Chrome mus
 ChromeDriver: Ensure that ChromeDriver is installed and properly configured.
 
 
-⚙️ Customization
+<h2>⚙️ Customization</h2>
 
 Feel free to modify the following parts of the code for further customization:
 
@@ -88,7 +88,7 @@ Marker and Popup: You can customize the marker popup message or add more details
 
 File Path: Change the path where the HTML file is saved by modifying the fileName variable in the gps_locator() function.
 
-🛡️ Error Handling
+<h2>🛡️ Error Handling</h2>
 
 The script includes basic error handling, such as:
 
@@ -97,7 +97,7 @@ Internet Unavailability: If there is no internet connection, the script will exi
 Browser Issues: If Selenium encounters issues (e.g., incorrect file path or missing ChromeDriver), the error will be printed to the console for debugging.
 
 
-📜 Future Improvements
+<h2>📜 Future Improvements</h2>
 
 GUI(Graphical User Interface): Implement a GUI for easier interaction.
 
@@ -106,16 +106,16 @@ Multiple Location Markers: Extend the functionality to add multiple location mar
 Cross-Browser Support: Add support for other browsers like Firefox or Edge by using their respective web drivers.
 
 
-🏆 License
+<h2>🏆 License</h2>
 
 This project is licensed under the MIT License - see the LICENSE file for more details.
 
 
-🤝 Contributions
+<h2>🤝 Contributions</h2>
 
 Feel free to fork the repository and submit pull requests. All contributions are welcome!
 
-🔗 Links
+<h2>🔗 Links</h2>
 
 Documentation: Folium Library
 
@@ -124,7 +124,7 @@ Selenium Documentation: Selenium WebDriver for Python
 IPInfo API: ipinfo.io
 
 
-📧 Contact
+<h2>📧 Contact</h2>
 
 If you have any questions or suggestions, feel free to open an issue or contact me directly.
 
